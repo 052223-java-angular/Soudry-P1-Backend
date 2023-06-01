@@ -1,22 +1,23 @@
-# P0 - Pair Programming eCommerce Project
+# P1 - Full Stack Application
 
 ## Introduction
 
-This is a Java-based command-line interface (CLI) eCommerce application. The application will be primarily built using Java and will utilize a PostgreSQL database to store product and user information.
+Project P1 is a full stack application that involves building a web application using Spring Boot for the backend and Angular for the frontend. The project covers the following key aspects:
+
+Building RESTful APIs with Spring Boot
+Implementing CRUD operations for data management
+Integrating Angular frontend with Spring Boot backend
 
 ## User Stories
 
-- **As a user**, I want to register an account so that I can have a personalized shopping experience.
-- **As a user**, I want to log in to my account so that I can access my shopping cart and order history.
-- **As a user**, I want to browse through products only when logging in.
-- **As a user**, I want to search for products by name, category, or price range so that I can find what I'm looking for.
-- **As a user**, I want to add products to my shopping cart so that I can purchase them later.
-- **As a user**, I want to modify the quantity or remove items from my cart so that I can make changes before finalizing the purchase.
-- **As a user**, I want to check out and pay for my order securely so that my personal and financial information is safe.
-- **As a user**, I want to review my order history so that I can keep track of my purchases.
-- **As a user**, I want to rate and review products so that I can share my experience with other users.
-- **As a user**, I want to view ratings and reviews from other users so that I can make informed buying decisions.
-
+- **As a user**, I want to be able to understand the rules of the game in a easy and a concise manner.
+- **As a user**, I want to be able to browse all potential monsters to choose my team.
+- **As a user**, I want to be able to make more specific queries when searching for monster fights..
+- **As a user**, I want to be able my team of monsters to fit according to my preferences.
+- **As a user**, I want to be able to choose from a list of premade monsters to get started on the game faster.
+- **As a user**, I want to be able to choose which enemy team that I would fight.
+- **As a user**, I want to be able to influence combat with items or other abilities.
+- **As a user**, I want to be able to see a battle report to determine how well I did against my opponent so I can do better next time.
 
 ## MVP (Minimum Viable Product)
 
@@ -27,6 +28,13 @@ This is a Java-based command-line interface (CLI) eCommerce application. The app
 - Secure payment process
 - Order history
 - Product rating and reviewing
+
+## Stretch Stories 
+
+- **As a user**, I want to be able to play the game on Munchy Mode.
+- **As a user**, I want to be able to build my own potential enemy teams.
+- **As a user**, I want to be randomly matched against opponents.
+- **As a user**, I want to be register an account to persist my monster teams.
 
 ## Stretch Goals
 
