@@ -1,12 +1,8 @@
-# P1 - Full Stack Application
+# P1 - D&D War
 
 ## Introduction
 
-Project P1 is a full stack application that involves building a web application using Spring Boot for the backend and Angular for the frontend. The project covers the following key aspects:
-
-Building RESTful APIs with Spring Boot
-Implementing CRUD operations for data management
-Integrating Angular frontend with Spring Boot backend
+D&D War is a full stack application where players can make teams out of the most famous of D&D monsters and have them fight other teams of monsters. Battles are carried out using official D&D 5E edition stats as provided by http://www.dnd5eapi.co/ . Players will be presented these monsters in the form of interactable cards. Registration is optional. Simply Stop By and have fun!
 
 ## User Stories
 
@@ -16,37 +12,46 @@ Integrating Angular frontend with Spring Boot backend
 - **As a user**, I want to be able my team of monsters to fit according to my preferences.
 - **As a user**, I want to be able to choose from a list of premade monsters to get started on the game faster.
 - **As a user**, I want to be able to choose which enemy team that I would fight.
+- **As a user**, I want to be able use my team of monsters to fight other teams of monsters..
 - **As a user**, I want to be able to influence combat with items or other abilities.
 - **As a user**, I want to be able to see a battle report to determine how well I did against my opponent so I can do better next time.
 
 ## MVP (Minimum Viable Product)
 
-- User registration and login
-- Browsing and searching for products
-- Adding products to a shopping cart
-- Modifying the shopping cart
-- Secure payment process
+- Welcome Page With Rules of the Game
+- Browsing and searching for monsters
+- Adding Monsters to team and modifying team. 
+- Premade Teams for you and the enemy
+- Battle Functionality
+- Battle Item Functionality
+- Auto Mated and Manual Making.
 - Order history
-- Product rating and reviewing
+- Battle Report After the battle
 
 ## Stretch Stories 
 
 - **As a user**, I want to be able to play the game on Munchy Mode.
+- **As a user**, I want to be able to able to win currency to spend on shop items.
+- **As a user**, I want there to be a shop to buy power ups.
 - **As a user**, I want to be able to build my own potential enemy teams.
 - **As a user**, I want to be randomly matched against opponents.
 - **As a user**, I want to be register an account to persist my monster teams.
+- **As a user**, I want to have a playable tutorial to understand how the game works
 
 ## Stretch Goals
 
-- Implementing a recommendation system based on user's previous purchases
-- Adding an admin role that can add, remove, or modify products
-- Implementing promotional codes and discounts
-- Adding a wish list feature
+- Implement Alternate Game Mode with custom rules called Munchy Mode.
+- Implement Currency and Shop functionality 
+- Implementing the ability to create and alter teams for you to fight again.
+- Random matching of enemy team.
+- User Registration and Login
+- Tutorial Mode
 
 ## Tech Stacks
 
-- **Java**: The main programming language used for building the application.
-- **PostgreSQL**: Used as the database to store user, product, and order data.
+- **Java**: The programming language used to build the backend.
+- **Angular** The Framework used to build the front end.
+- **PostgreSQL**: Used as the database to persist .
 - **Maven or Gradle**: Used for managing project dependencies.
 - **JUnit**: A testing framework for Java applications, used to ensure our code works as expected.
 - **Log4j**: A logging utility for debugging purposes.
@@ -54,6 +59,7 @@ Integrating Angular frontend with Spring Boot backend
 - **BCrypt**: A Java library for hashing and checking passwords for security.
 - **JUnit, Mockito, and PowerMock**: Used for unit and integration testing.
 - **Git and GitHub**: Used for version control.
+- **Spring Boot** Connecting to the third party APi and other bits of functionality.
 
 ## Requirements
 
@@ -72,4 +78,13 @@ Integrating Angular frontend with Spring Boot backend
 - **Documentation**: The repository should include a README file with clear instructions on how to run the application. Code should be well-commented to allow for easy understanding and maintenance.
 
 - **Scalable**: The design of the application should be scalable, allowing for easy addition of new features or modifications in the future.
+
+## MVP ERD
+
+![P-0-ERD - Page 1](https://github.com/052223-java-angular/Soudry-P1-D-D-War/assets/55551370/7e6206f6-89f3-459d-9211-d1e58de70d16)
+
+
+
+
+
 
