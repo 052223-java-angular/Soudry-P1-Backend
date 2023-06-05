@@ -26,3 +26,8 @@ replay_pid*
 *.settings/
 *.classpath
 *.project
+
+# *.application.log
+*target/
+
+application.log.2023-06-04.0.gz
