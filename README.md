@@ -76,3 +76,8 @@ D&D War is a full stack application where players can make teams out of the most
 - **Documentation**: The repository should include a README file with clear instructions on how to run the application. Code should be well-commented to allow for easy understanding and maintenance.
 
 - **Scalable**: The design of the application should be scalable, allowing for easy addition of new features or modifications in the future.
+
+## ERD 
+![P-0-ERD - Page 1](https://github.com/052223-java-angular/Soudry-P1-Backend/assets/55551370/3cc682bf-073e-4094-aec9-075418679381)
+
+
