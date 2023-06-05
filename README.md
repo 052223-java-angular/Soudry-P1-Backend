@@ -8,7 +8,6 @@ D&D War is a full stack application where players can make teams out of the most
 
 - **As a user**, I want to be able to understand the rules of the game in a easy and a concise manner.
 - **As a user**, I want to be able to browse all potential monsters to choose my team.
-- **As a user**, I want to be able to make more specific queries when searching for monster fights..
 - **As a user**, I want to be able my team of monsters to fit according to my preferences.
 - **As a user**, I want to be able to choose from a list of premade monsters to get started on the game faster.
 - **As a user**, I want to be able to choose which enemy team that I would fight.
@@ -55,11 +54,10 @@ D&D War is a full stack application where players can make teams out of the most
 - **Maven or Gradle**: Used for managing project dependencies.
 - **JUnit**: A testing framework for Java applications, used to ensure our code works as expected.
 - **Log4j**: A logging utility for debugging purposes.
-- **JDBC (Java Database Connectivity)**: An API for connecting and executing queries on the database.
 - **BCrypt**: A Java library for hashing and checking passwords for security.
 - **JUnit, Mockito, and PowerMock**: Used for unit and integration testing.
 - **Git and GitHub**: Used for version control.
-- **Spring Boot** Connecting to the third party APi and other bits of functionality.
+- **Spring Boot** For creating, managing and interacting with postgres database and the third party api.
 
 ## Requirements
 
@@ -78,13 +76,3 @@ D&D War is a full stack application where players can make teams out of the most
 - **Documentation**: The repository should include a README file with clear instructions on how to run the application. Code should be well-commented to allow for easy understanding and maintenance.
 
 - **Scalable**: The design of the application should be scalable, allowing for easy addition of new features or modifications in the future.
-
-## MVP ERD
-
-![P-0-ERD - Page 1](https://github.com/052223-java-angular/Soudry-P1-D-D-War/assets/55551370/7e6206f6-89f3-459d-9211-d1e58de70d16)
-
-
-
-
-
-
