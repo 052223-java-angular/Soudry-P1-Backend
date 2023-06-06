@@ -23,8 +23,7 @@ D&D War is a full stack application where players can make teams out of the most
 - Premade Teams for you and the enemy
 - Battle Functionality
 - Battle Item Functionality
-- Auto Mated and Manual Making.
-- Order history
+- MatchMaking
 - Battle Report After the battle
 
 ## Stretch Stories 
@@ -53,7 +52,6 @@ D&D War is a full stack application where players can make teams out of the most
 - **PostgreSQL**: Used as the database to persist .
 - **Maven or Gradle**: Used for managing project dependencies.
 - **JUnit**: A testing framework for Java applications, used to ensure our code works as expected.
-- **Log4j**: A logging utility for debugging purposes.
 - **BCrypt**: A Java library for hashing and checking passwords for security.
 - **JUnit, Mockito, and PowerMock**: Used for unit and integration testing.
 - **Git and GitHub**: Used for version control.
@@ -77,7 +75,7 @@ D&D War is a full stack application where players can make teams out of the most
 
 - **Scalable**: The design of the application should be scalable, allowing for easy addition of new features or modifications in the future.
 
-## ERD 
-![P-0-ERD - Page 1](https://github.com/052223-java-angular/Soudry-P1-Backend/assets/55551370/3cc682bf-073e-4094-aec9-075418679381)
+## ERD
 
+![P-0-ERD - Page 1 (1)](https://github.com/052223-java-angular/Soudry-P1-Backend/assets/55551370/3ab67170-dcfa-4ddf-a766-539e57e8cf11)
 
