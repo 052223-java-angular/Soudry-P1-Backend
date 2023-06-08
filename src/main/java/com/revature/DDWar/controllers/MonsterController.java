@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.revature.DDWar.dtos.responses.MonsterList;
 import com.revature.DDWar.services.MonsterService;
 import com.revature.DDWar.dtos.responses.Monster;
 import reactor.core.publisher.Mono;
-
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -38,13 +36,6 @@ public class MonsterController {
         Monster mm = monsterMono.block();
 
         return ResponseEntity.status(HttpStatus.OK).body(mm);
-        // if (mm != null) {
-        //     return ResponseEntity.status(HttpStatus.OK).body(mm);
-        // } else {
-        //     return ResponseEntity.notFound().build();
-        // }
+        
     }
 }
-
-    // }
-// }
