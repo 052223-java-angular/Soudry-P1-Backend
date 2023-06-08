@@ -23,25 +23,25 @@ public class Item {
     private String id;
 
     // set the column username to username
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "itemname", nullable = false)
+    private String itemName;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "itemdescription", nullable = false)
+    private String itemDescription;
 
-    @Column(name = "type", nullable = false)
-    private String type;
+    @Column(name = "itemtype", nullable = false)
+    private String itemType;
 
-    @Column(name = "bonus", nullable = false)
-    private Integer bonus;
+    @Column(name = "itembonus", nullable = false)
+    private Integer itemBonus;
 
    
   
     public Item(String name, String description, String type, Integer bonus) {
         this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.type = type;
-        this.bonus = bonus;
+        this.itemName = name;
+        this.itemDescription = description;
+        this.itemType = type;
+        this.itemBonus = bonus;
     }
 }
