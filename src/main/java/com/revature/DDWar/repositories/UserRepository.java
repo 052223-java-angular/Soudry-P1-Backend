@@ -1,5 +1,5 @@
 package com.revature.DDWar.repositories;
-import java.util.Optional;
+// import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, String> {
      * @return an Optional containing the User object if found, or an empty Optional
      *         otherwise
      */
-    Optional<User> findByUsername(String username);
+    // Optional<User> findByUsername(String username);
 
-    Optional<User> getUsername(String username);
+    // Optional<User> getUsername(String username);
 }

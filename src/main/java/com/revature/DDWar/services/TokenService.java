@@ -18,7 +18,7 @@
 //  * Service class for handling JWT token generation and validation.
 //  */
 // @Service
-// public class JwtTokenService {
+// public class TokenService {
 //     @Value("${jwt.secret}")
 //     private String SECRET_KEY;
 
@@ -31,7 +31,6 @@
 //     public String generateToken(Principal userPrincipal) {
 //         Map<String, Object> claims = new HashMap<>();
 //         claims.put("id", userPrincipal.getId());
-//         claims.put("role", userPrincipal.getRole());
 
 //         return Jwts.builder()
 //                 .setClaims(claims)

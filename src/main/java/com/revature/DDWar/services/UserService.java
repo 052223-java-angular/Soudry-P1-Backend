@@ -3,12 +3,12 @@ package com.revature.DDWar.services;
 import org.springframework.stereotype.Service;
 
 // import com.revature.DDWar.dtos.requests.NewLoginRequest;
-// import com.revature.DDWar.dtos.requests.NewUserRequest;
+import com.revature.DDWar.dtos.requests.NewUserRequest;
 // import com.revature.DDWar.dtos.responses.Principal;
 
-import java.util.Optional;
+// import java.util.Optional;
 
-// import org.mindrot.jbcrypt.BCrypt;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.revature.DDWar.repositories.UserRepository;
 // import com.revature.DDWar.utils.custom_exceptions.UserNotFoundException;
@@ -27,19 +27,19 @@ public class UserService {
      * @param req the NewUserRequest object containing user registration details
      * @return the newly registered User object
      */
-    // public User registerUser(NewUserRequest req) {
-    //     // find role USER
+    public User registerUser(NewUserRequest req) {
+        // find role USER
        
 
-    //     // hash password
-    //     // String hashed = BCrypt.hashpw(req.getPassword(), BCrypt.gensalt());
+        // hash password
+        String hashed = BCrypt.hashpw(req.getPassword(), BCrypt.gensalt());
 
-    //     // create new user
-    //     // User newUser = new User(req.getUsername(), hashed);
+        // create new user
+        User newUser = new User(req.getUsername(), hashed);
 
-    //     // save and return user
-    //     // return userRepo.save(newUser);
-    // }
+        // save and return user
+        return userRepo.save(newUser);
+    }
 
     // public Principal login(NewLoginRequest req) {
     //     Optional<User> userOpt = userRepo.findByUsername(req.getUsername());
@@ -70,10 +70,10 @@ public class UserService {
      * @param username the username to check for uniqueness
      * @return true if the username is unique, false otherwise
      */
-    public boolean isUniqueUsername(String username) {
-        Optional<User> userOpt = userRepo.findByUsername(username);
-        return userOpt.isEmpty();
-    }
+    // public boolean isUniqueUsername(String username) {
+    //     Optional<User> userOpt = userRepo.findByUsername(username);
+    //     return userOpt.isEmpty();
+    // }
 
     /**
      * Checks if the provided password is valid.
