@@ -30,8 +30,7 @@ replay_pid*
 # *.application.log
 *target/
 
-*application.log.
+*application.
 
 # *.properties
-application.properties
 .DS_Store

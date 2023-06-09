@@ -33,9 +33,10 @@ public class User {
     @Column(name = "email", nullable = false)
     private String email;
   
-    public User(String username, String password) {
+    public User(String username, String password, String email) {
         this.id = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 }
