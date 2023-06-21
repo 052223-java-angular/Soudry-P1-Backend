@@ -6,6 +6,7 @@ import com.revature.DDWar.dtos.responses.Monster;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import java.util.Collections;
 
 
 @Service
@@ -18,6 +19,14 @@ public class MonsterService {
         .retrieve()
         .bodyToMono(MonsterList.class);  
     }
+
+    public Mono<MonsterList> fetchAndScrambleMonsterData() {
+    return fetchMonsterData()
+        .map(monsterList -> {
+        Collections.shuffle(monsterList.getResults());
+        return monsterList;
+    });
+}
 
     public Mono<Monster> fetchSingleMonster(String monsterName) {
         return webClient.get()

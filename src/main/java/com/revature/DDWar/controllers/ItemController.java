@@ -2,6 +2,7 @@ package com.revature.DDWar.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,10 @@ import lombok.AllArgsConstructor;
 import java.util.Optional;
 
 @AllArgsConstructor
+
 @RestController
 @RequestMapping("/items")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ItemController {
     private final ItemService itemService;
     public final TokenService tokenService;
