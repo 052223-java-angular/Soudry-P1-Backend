@@ -1,110 +1,94 @@
-// package com.revature.DDWar.services;
+package com.revature.DDWar.services;
 
-// import java.util.Date;
-// import java.util.HashMap;
-// import java.util.Map;
-// import java.util.function.Function;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 
-// import org.springframework.beans.factory.annotation.Value;
-// import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-// import com.revature.DDWar.dtos.responses.Principal;
+import com.revature.DDWar.dtos.responses.Principal;
+import com.revature.DDWar.utils.custom_exceptions.InvalidTokenException;
 
-// import io.jsonwebtoken.Claims;
-// import io.jsonwebtoken.Jwts;
-// import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
 
-// /**
-//  * Service class for handling JWT token generation and validation.
-//  */
-// @Service
-// public class TokenService {
-//     @Value("${jwt.secret}")
-//     private String SECRET_KEY;
+import java.util.Optional;
 
-//     /**
-//      * Generates a JWT token based on the provided user principal.
-//      *
-//      * @param userPrincipal The user principal.
-//      * @return The generated JWT token.
-//      */
-//     public String generateToken(Principal userPrincipal) {
-//         Map<String, Object> claims = new HashMap<>();
-//         claims.put("id", userPrincipal.getId());
+/**
+ * Service class for handling JWT token generation and validation.
+ */
+@Service
+public class TokenService {
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
 
-//         return Jwts.builder()
-//                 .setClaims(claims)
-//                 .setSubject(userPrincipal.getUsername())
-//                 .setIssuedAt(new Date(System.currentTimeMillis()))
-//                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Set expiration time to 10
-//                                                                                            // hours
-//                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
-//                 .compact();
-//     }
+    public String generateToken(Principal userPrincipal) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("id", userPrincipal.getId());
 
-//     /**
-//      * Validates the provided JWT token against the user principal.
-//      *
-//      * @param token         The JWT token to validate.
-//      * @param userPrincipal The user principal to compare against.
-//      * @return true if the token is valid for the user principal, false otherwise.
-//      */
-//     public boolean validateToken(String token, Principal userPrincipal) {
-//         String tokenUsername = extractUsername(token);
-//         return tokenUsername.equals(userPrincipal.getUsername());
-//     }
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(userPrincipal.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // Set expiration time to 10
+                                                                                           // hours
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .compact();
+    }
 
-//     /**
-//      * Extracts the username from the JWT token.
-//      *
-//      * @param token The JWT token.
-//      * @return The extracted username.
-//      */
-//     public String extractUsername(String token) {
-//         return extractClaim(token, Claims::getSubject);
-//     }
+    //  Validates the provided JWT token against the user principal.
+    public boolean validateToken(String token, Principal userPrincipal) {
+        String tokenUsername = extractUsername(token);
+        return tokenUsername.equals(userPrincipal.getUsername());
+    }
 
-//     /**
-//      * Extracts a claim from the JWT token using the provided claims resolver
-//      * function.
-//      *
-//      * @param token          The JWT token.
-//      * @param claimsResolver The claims resolver function.
-//      * @param <T>            The type of the claim.
-//      * @return The extracted claim.
-//      */
-//     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-//         final Claims claims = extractAllClaims(token);
-//         return claimsResolver.apply(claims);
-//     }
+    //  /** Extracts the username from the JWT token.
+    public String extractUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
+    }
 
-//     /**
-//      * Extracts all claims from the JWT token.
-//      *
-//      * @param token The JWT token.
-//      * @return The extracted claims.
-//      */
-//     private Claims extractAllClaims(String token) {
-//         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
-//     }
+    /**
+     * Extracts a claim from the JWT token using the provided claims resolver
+     * function.
+     * @param claimsResolver The claims resolver function.
+     * @param <T>            The type of the claim.
+     */
 
-//     /**
-//      * Extracts the user ID from the JWT token.
-//      *
-//      * @param token The JWT token.
-//      * @return The extracted user ID.
-//      */
-//     public String extractUserId(String token) {
-//         return (String) extractAllClaims(token).get("id");
-//     }
+    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
 
-//     /**
-//      * Extracts the user role from the JWT token.
-//      *
-//      * @param token The JWT token.
-//      * @return The extracted user role.
-//      */
-//     public String extractUserRole(String token) {
-//         return (String) extractAllClaims(token).get("role");
-//     }
-// }
+    /**
+     * Extracts all claims from the JWT token.
+     *
+     * @param token The JWT token.
+     * @return The extracted claims.
+     */
+    private Claims extractAllClaims(String token) {
+        try {
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+        } catch (SignatureException e) {
+        throw new InvalidTokenException("Your token was invalid");
+    }
+    }
+
+    // /**
+    //  * Extracts the user ID from the JWT token.
+    //  *
+    //  * @param token The JWT token.
+    //  * @return The extracted user ID.
+    //  */
+    // public String extractUserId(String token) {
+    //     return (String) extractAllClaims(token).get("id");
+    // }
+
+      public Optional<String> extractUserIdOptional(String token) {
+        String value = (String) extractAllClaims(token).get("id");
+        return Optional.of(value);
+    }
+}
