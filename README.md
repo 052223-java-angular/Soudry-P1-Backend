@@ -78,4 +78,3 @@ D&D War is a full stack application where players can make teams out of the most
 ## ERD
 
 ![P-0-ERD - Page 1 (1)](https://github.com/052223-java-angular/Soudry-P1-Backend/assets/55551370/3ab67170-dcfa-4ddf-a766-539e57e8cf11)
-

@@ -6,25 +6,32 @@ import com.revature.DDWar.dtos.responses.Monster;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-import java.util.List;
+import java.util.Collections;
+
 
 @Service
 public class MonsterService {
     WebClient webClient = WebClient.builder().build();
 
-    public Mono<List<MonsterList>> fetchMonsterData() {
+    public Mono<MonsterList> fetchMonsterData() {
         return webClient.get()
-        .uri("/api/monsters")
+        .uri("https://www.dnd5eapi.co/api/monsters")
         .retrieve()
-        .bodyToFlux(MonsterList.class)
-        .collectList();    
+        .bodyToMono(MonsterList.class);  
     }
 
-    // public Mono<Monster> fetchSingleMonster() {
-    //     return webClient.get()
-    //     .uri("/api/monsters/{monsterName}")
-    //     .retrieve()
-    //     .bodyToFlux(MonsterList.class)
-    //     .collectList();    
-    // }
+    public Mono<MonsterList> fetchAndScrambleMonsterData() {
+    return fetchMonsterData()
+        .map(monsterList -> {
+        Collections.shuffle(monsterList.getResults());
+        return monsterList;
+    });
+}
+
+    public Mono<Monster> fetchSingleMonster(String monsterName) {
+        return webClient.get()
+        .uri("https://www.dnd5eapi.co/api/monsters/" + monsterName)
+        .retrieve()
+        .bodyToMono(Monster.class);
+    }
 }

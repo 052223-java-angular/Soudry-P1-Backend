@@ -1,6 +1,8 @@
 package com.revature.DDWar.dtos.responses;
 import java.util.List;
 
+import com.revature.DDWar.models.MonsterResult;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MonsterList {
-    private int count;
+    // private int count;
     private List<MonsterResult> results;
 }
