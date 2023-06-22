@@ -32,5 +32,11 @@ replay_pid*
 
 *application
 
+application.properties
+application.log
+*.gz
+
+
+
 # *.properties
 .DS_Store
