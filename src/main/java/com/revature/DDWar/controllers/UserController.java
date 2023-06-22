@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.DDWar.services.TokenService;
 import com.revature.DDWar.services.UserService;
-// import com.revature.DDWar.utils.custom_exceptions.ResourceConflictException;
+import com.revature.DDWar.utils.custom_exceptions.ResourceConflictException;
 import com.revature.DDWar.dtos.requests.NewLoginRequest;
 import com.revature.DDWar.dtos.requests.NewUserRequest;
 import com.revature.DDWar.dtos.responses.Principal;
@@ -33,26 +33,26 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody NewUserRequest req) {
         // // if username is not valid, throw exception
-        // if (!userService.isValidUsername(req.getUsername())) {
-        //     throw new ResourceConflictException(
-        //             "Username needs to be 8-20 characters long and can only contain letters, numbers, periods, and underscores");
-        // }
+        if (!userService.isValidUsername(req.getUsername())) {
+            throw new ResourceConflictException(
+                    "Username needs to be 8-20 characters long and can only contain letters, numbers, periods, and underscores");
+        }
 
-        // // if username is not unique, throw exception
-        // if (!userService.isUniqueUsername(req.getUsername())) {
-        //     throw new ResourceConflictException("Username is not unique");
-        // }
+        // if username is not unique, throw exception
+        if (!userService.isUniqueUsername(req.getUsername())) {
+            throw new ResourceConflictException("Username is not unique");
+        }
 
-        // // if password is not valid, throw exception
-        // if (!userService.isValidPassword(req.getPassword())) {
-        //     throw new ResourceConflictException(
-        //             "Password needs to be at least 8 characters long and contain at least one letter and one number");
-        // }
+        // if password is not valid, throw exception
+        if (!userService.isValidPassword(req.getPassword())) {
+            throw new ResourceConflictException(
+                    "Password needs to be at least 8 characters long and contain at least one letter and one number");
+        }
 
-        // // if password and confirm password do not match, throw exception
-        // if (!userService.isSamePassword(req.getPassword(), req.getConfirmPassword())) {
-        //     throw new ResourceConflictException("Passwords do not match");
-        // }
+        // if password and confirm password do not match, throw exception
+        if (!userService.isSamePassword(req.getPassword(), req.getConfirmPassword())) {
+            throw new ResourceConflictException("Passwords do not match");
+        }
         // register user
         userService.registerUser(req);
 
