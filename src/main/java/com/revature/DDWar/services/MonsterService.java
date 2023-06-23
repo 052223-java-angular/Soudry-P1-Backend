@@ -30,7 +30,12 @@ public Mono<MonsterList> fetchMonsterList() {
         List<Mono<Monster>> monsterMonos = request.stream()
                 .map(monsterResult -> fetchSingleMonster(monsterResult.getIndex())
                         .flatMap(monster -> {
+                            String type = monster.getType();
+                            if (type.contains("swarm")) {
+                                  monsterResult.setMonsterType("swarm");
+                            } else {
                             monsterResult.setMonsterType(monster.getType());
+                            }
                             return Mono.just(monster);
                         })
                 )
