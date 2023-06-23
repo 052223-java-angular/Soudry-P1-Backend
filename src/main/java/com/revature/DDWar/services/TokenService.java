@@ -12,9 +12,12 @@ import com.revature.DDWar.dtos.responses.Principal;
 import com.revature.DDWar.utils.custom_exceptions.InvalidTokenException;
 
 import io.jsonwebtoken.Claims;
+
 import io.jsonwebtoken.Jwts;
+
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
+
 
 import java.util.Optional;
 
@@ -90,5 +93,22 @@ public class TokenService {
       public Optional<String> extractUserIdOptional(String token) {
         String value = (String) extractAllClaims(token).get("id");
         return Optional.of(value);
+    }
+
+   public boolean isJwtExpired(String token) {
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(SECRET_KEY)
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            Date expirationDate = claims.getExpiration();
+            Date currentDate = new Date();
+
+            return expirationDate != null && currentDate.after(expirationDate);
+        } catch (Exception e) {
+            // Token is invalid or parsing failed
+            return true;
+        }
     }
 }

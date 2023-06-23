@@ -60,13 +60,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    // @GetMapping("/testlink")
-    // public ResponseEntity<?> getUser(@RequestParam(value = "name", required = true) String name) { 
-    //     userService.g
-    // }
-
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody NewLoginRequest req) {
+     
             // userservice to call login method
             Principal principal = userService.login(req);
 
