@@ -70,6 +70,29 @@ public Mono<MonsterList> fetchMonsterList() {
         return webClient.get()
         .uri("https://www.dnd5eapi.co/api/monsters/" + monsterName)
         .retrieve()
-        .bodyToMono(Monster.class);
+        .bodyToMono(Monster.class)
+        .map(this::calculateStrength);
+    }
+
+    private Monster calculateStrength(Monster monster) {
+     int number =  monster.getStrength();
+        int counter = - 5;
+     for (int i = 2; i < 31;) {
+        if (number == 1) {
+            monster.setStrength(-5);
+        } 
+        else if (number == i || number == (i + 1)) {
+            counter++;
+            monster.setStrength(counter);
+        }
+        else {
+            counter++;
+        }
+        i = i + 2;
+     }
+     if (number == 1) {
+        monster.setStrength(null);
+     }
+     return monster;
     }
 }
