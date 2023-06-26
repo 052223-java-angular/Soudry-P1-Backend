@@ -47,3 +47,5 @@ This backend consists of several endpoints which the frontend api as seen here h
 - **Git and GitHub**: Used for version control.
 - **Spring Boot** For creating, managing and interacting with postgres database and the third party api.
 -- **Elastic Bean Stalk** For Hosting it online
+
+  ![P-0-ERD - Page 1 (1)](https://github.com/052223-java-angular/Soudry-P1-Backend/assets/55551370/a7306d41-781d-420f-902e-3ac32b73e9b3)
