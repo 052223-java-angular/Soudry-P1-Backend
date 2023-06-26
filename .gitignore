@@ -30,4 +30,13 @@ replay_pid*
 # *.application.log
 *target/
 
-application.log.2023-06-04.0.gz
+*application
+
+application.properties
+application.log
+*.gz
+
+
+
+# *.properties
+.DS_Store
