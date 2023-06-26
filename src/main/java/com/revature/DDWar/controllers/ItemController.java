@@ -1,5 +1,7 @@
 package com.revature.DDWar.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +33,9 @@ import lombok.AllArgsConstructor;
 public class ItemController {
     private final ItemService itemService;
     public final TokenService tokenService;
+
+     
+    private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
   
 
     @GetMapping("/all")
@@ -45,6 +50,7 @@ public class ItemController {
 
         List<Item> listofItems = itemService.getItem();
         ItemPrinciple im = new ItemPrinciple(listofItems);
+           logger.info("All items retreived");
         return ResponseEntity.status(HttpStatus.OK).body(im);
     }
 
@@ -59,6 +65,8 @@ public class ItemController {
             throw new InvalidTokenException("Your token is expired");
         }
         Item item = itemService.getItemByName(name);
+
+           logger.info("single item retreived");
         return ResponseEntity.status(HttpStatus.OK).body(item);
     }
     

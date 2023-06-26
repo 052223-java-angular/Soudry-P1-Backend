@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-// import org.springframework.web.bind.annotation.GetMapping;
-
-// import org.springframework.web.bind.annotation.RequestParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.revature.DDWar.services.TokenService;
 import com.revature.DDWar.services.UserService;
@@ -18,6 +17,7 @@ import com.revature.DDWar.utils.custom_exceptions.ResourceConflictException;
 import com.revature.DDWar.dtos.requests.NewLoginRequest;
 import com.revature.DDWar.dtos.requests.NewUserRequest;
 import com.revature.DDWar.dtos.responses.Principal;
+
 
 import lombok.AllArgsConstructor;
 
@@ -28,6 +28,8 @@ import lombok.AllArgsConstructor;
 public class UserController {
     private final UserService userService;
     private final TokenService tokenService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 
     @PostMapping("/register")
@@ -56,6 +58,8 @@ public class UserController {
         // register user
         userService.registerUser(req);
 
+         logger.info("Successfully Registered");
+
         // return 201 - CREATED
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -65,6 +69,9 @@ public class UserController {
      
             // userservice to call login method
             Principal principal = userService.login(req);
+
+              logger.info("Successfully logged in");
+
 
             // create a jwt token
             String token = tokenService.generateToken(principal);

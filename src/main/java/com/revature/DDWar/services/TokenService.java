@@ -18,9 +18,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 
-
-import java.util.Optional;
-
 /**
  * Service class for handling JWT token generation and validation.
  */
@@ -79,22 +76,6 @@ public class TokenService {
         throw new InvalidTokenException("Your token was invalid");
     }
     }
-
-    // /**
-    //  * Extracts the user ID from the JWT token.
-    //  *
-    //  * @param token The JWT token.
-    //  * @return The extracted user ID.
-    //  */
-    // public String extractUserId(String token) {
-    //     return (String) extractAllClaims(token).get("id");
-    // }
-
-      public Optional<String> extractUserIdOptional(String token) {
-        String value = (String) extractAllClaims(token).get("id");
-        return Optional.of(value);
-    }
-
    public boolean isJwtExpired(String token) {
         try {
             Claims claims = Jwts.parser()

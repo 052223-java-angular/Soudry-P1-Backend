@@ -48,9 +48,6 @@ public Mono<MonsterList> fetchMonsterList() {
     });
 }
 
-
-
-
     public Mono<MonsterList> fetchMonsterData() {
         return webClient.get()
         .uri("https://www.dnd5eapi.co/api/monsters")

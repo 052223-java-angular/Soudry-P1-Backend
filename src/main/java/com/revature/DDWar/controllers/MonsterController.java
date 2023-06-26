@@ -1,5 +1,7 @@
 package com.revature.DDWar.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +32,8 @@ public class MonsterController {
     private MonsterService monsterService;
     public final TokenService tokenService;
 
+    private static final Logger logger = LoggerFactory.getLogger(MonsterController.class);
+
 
     // All works!
     @GetMapping("/all")
@@ -44,6 +48,7 @@ public class MonsterController {
         Mono<MonsterList> monsterMono = monsterService.fetchAndScrambleMonsterData();
       
         MonsterList mm = monsterMono.block();
+        logger.info("All monsters retreived");
         return ResponseEntity.status(HttpStatus.OK).body(mm);
     }
 
@@ -58,6 +63,8 @@ public class MonsterController {
 
         Mono<Monster> monsterMono = monsterService.fetchSingleMonster(name);
         Monster mm = monsterMono.block();
+           logger.info("Single monster retreived");
+        
         return ResponseEntity.status(HttpStatus.OK).body(mm);
     }
 }
